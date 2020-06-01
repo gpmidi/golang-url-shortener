@@ -31,3 +31,5 @@ data
 !/deployments/cloudfoundry/config.yaml
 !/deployments/cloudfoundry/manifest-example.yml
 !/deployments/cloudfoundry/run.sh
+
+.idea/
