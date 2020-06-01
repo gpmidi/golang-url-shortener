@@ -15,16 +15,6 @@ import (
 )
 
 func main() {
-	stop := make(chan os.Signal, 1)
-	if err := initConfig(); err != nil {
-		logrus.Fatal(err)
-	}
-	signal.Notify(stop, os.Interrupt)
-	logrus.SetFormatter(&logrus.TextFormatter{
-		ForceColors:   util.GetConfig().EnableColorLogs,
-		DisableColors: !util.GetConfig().EnableColorLogs,
-	})
-
 	// Hack to get heroku vars in
 	os.Setenv("GUS_LISTEN_ADDR", fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
 
@@ -35,6 +25,16 @@ func main() {
 	pw, _ := rurl.User.Password()
 	os.Setenv("GUS_REDIS_HOST", rurl.Host)
 	os.Setenv("GUS_REDIS_PASSWORD", pw)
+
+	stop := make(chan os.Signal, 1)
+	if err := initConfig(); err != nil {
+		logrus.Fatal(err)
+	}
+	signal.Notify(stop, os.Interrupt)
+	logrus.SetFormatter(&logrus.TextFormatter{
+		ForceColors:   util.GetConfig().EnableColorLogs,
+		DisableColors: !util.GetConfig().EnableColorLogs,
+	})
 
 	if util.GetConfig().EnableColorLogs == true {
 		logrus.SetOutput(ansicolor.NewAnsiColorWriter(os.Stdout))
