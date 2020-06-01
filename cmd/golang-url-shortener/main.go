@@ -26,15 +26,15 @@ func main() {
 	})
 
 	// Hack to get heroku vars in
-	os.Setenv("LISTEN_ADDY", fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
+	os.Setenv("GUS_LISTEN_ADDR", fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
 
 	rurl, err := url.Parse(os.Getenv("REDIS_URL"))
 	if err != nil {
 		logrus.WithError(err).Fatal("Failed to parse redis url")
 	}
 	pw, _ := rurl.User.Password()
-	os.Setenv("REDIS_HOST", rurl.Host)
-	os.Setenv("REDIS_PASSWORD", pw)
+	os.Setenv("GUS_REDIS_HOST", rurl.Host)
+	os.Setenv("GUS_REDIS_PASSWORD", pw)
 
 	if util.GetConfig().EnableColorLogs == true {
 		logrus.SetOutput(ansicolor.NewAnsiColorWriter(os.Stdout))
