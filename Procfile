@@ -1,1 +1,1 @@
-web: cmd/golang-url-shortener
+web: bin/golang-url-shortener
