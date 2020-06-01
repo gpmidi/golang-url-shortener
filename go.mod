@@ -1,4 +1,4 @@
-module git.soma.salesforce.com/Asgard/golang-url-shortener
+module github.com/mxschmitt/golang-url-shortener
 
 go 1.14
 
@@ -11,7 +11,6 @@ require (
 	github.com/go-redis/redis v6.15.8+incompatible
 	github.com/gobuffalo/packr/v2 v2.8.0
 	github.com/mxschmitt/golang-env-struct v0.0.0-20181017075525-0c54aeca8397
-	github.com/mxschmitt/golang-url-shortener v0.0.0-20190320140303-3c249d5bb97a
 	github.com/onsi/ginkgo v1.12.2 // indirect
 	github.com/pborman/uuid v1.2.0
 	github.com/pkg/errors v0.9.1
