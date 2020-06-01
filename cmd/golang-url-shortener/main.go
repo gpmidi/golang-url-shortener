@@ -25,8 +25,7 @@ func main() {
 	})
 
 	// Hack to get port in
-	os.Setenv("LISTEN_ADDY",fmt.Sprintf("0.0.0.0:%v",os.Getenv("PORT","8080"))
-
+	os.Setenv("LISTEN_ADDY", fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
 
 	if util.GetConfig().EnableColorLogs == true {
 		logrus.SetOutput(ansicolor.NewAnsiColorWriter(os.Stdout))
