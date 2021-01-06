@@ -1,13 +1,13 @@
 FROM golang:1.15-alpine AS BUILD
-ENV GOPATH="/go"
+
 # Deps
 RUN apk update && apk add --no-cache ca-certificates curl yarn bash tcpdump vim git
 RUN go get -v github.com/mattn/goveralls \
  && go get -v github.com/gobuffalo/packr/v2/packr2 \
  && go get -v github.com/mitchellh/gox
 
-COPY . /$GOPATH/src/github.com/mxschmitt/golang-url-shortener/
-WORKDIR /$GOPATH/src/github.com/mxschmitt/golang-url-shortener/
+COPY . /go/src/github.com/mxschmitt/golang-url-shortener/
+WORKDIR /go/src/github.com/mxschmitt/golang-url-shortener/
 RUN go mod tidy && go mod download && go mod tidy && go mod vendor
 
 
@@ -16,7 +16,6 @@ RUN cd web && yarn install && yarn build && rm build/static/**/*.map
 
 # Build it
 RUN go build cmd/golang-url-shortener/main.go
-RUN ls -alh $GOPATH/bin -R
 
 
 
