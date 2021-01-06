@@ -30,6 +30,7 @@ RUN apk update && apk add --no-cache ca-certificates curl bash tcpdump vim git
 
 COPY --from=BUILD /go/src/github.com/mxschmitt/golang-url-shortener/main /usr/bin/golang-url-shortener
 COPY --from=BUILD /go/src/github.com/mxschmitt/golang-url-shortener/web/build/static /usr/local/static
+COPY --from=BUILD /go/src/github.com/mxschmitt/golang-url-shortener/internal/handlers/tmpls /tmpls
 
 HEALTHCHECK --interval=30s CMD curl -f http://127.0.0.1:$PORT/api/v1/info || exit 1
 
