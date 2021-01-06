@@ -1,5 +1,5 @@
 FROM golang:1.15-alpine AS BUILD
-
+ENV GOPATH="/go"
 # Deps
 RUN apk update && apk add --no-cache ca-certificates curl yarn bash tcpdump vim git
 RUN go get -v github.com/mattn/goveralls \
