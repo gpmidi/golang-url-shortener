@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: build/Dockerfile.amd64
+
+run:
+  web:
+

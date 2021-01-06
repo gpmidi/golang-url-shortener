@@ -162,6 +162,7 @@ func (h *Handler) setHandlers() error {
 	protected.POST("/lookup", h.handleLookup)
 	protected.GET("/recent", h.handleRecent)
 	protected.POST("/visitors", h.handleGetVisitors)
+	protected.Static("/static", "./static")
 
 	h.engine.GET("/api/v1/info", h.handleInfo)
 	h.engine.GET("/api/v1/displayURL", h.handleDisplayURL)
