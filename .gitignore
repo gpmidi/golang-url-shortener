@@ -33,5 +33,3 @@ data
 !/deployments/cloudfoundry/run.sh
 
 .idea/
-
-/vendor/
